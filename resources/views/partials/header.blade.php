@@ -16,7 +16,7 @@
         <div id="header-center">
 
             <ul>
-                @foreach ($data['navbarLinks'] as $link)
+                @foreach ($navbarLinks as $link)
                 <li>
                     <a href="">{{ $link }}</a>    
                 </li>        

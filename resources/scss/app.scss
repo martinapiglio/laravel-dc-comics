@@ -3,6 +3,7 @@
 @import '~bootstrap/scss/bootstrap';
 
 a {
+    color:inherit;
     text-decoration: none;
 }
 
@@ -145,6 +146,15 @@ main {
         color: white;
         background-color: $skyblue;
         cursor: pointer;
+    }
+
+    #comic {
+        aspect-ratio: 1;
+        overflow: hidden;
+
+        img {
+            width: 100%;
+        }
     }
 
 }

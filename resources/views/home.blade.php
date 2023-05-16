@@ -11,16 +11,18 @@
 
         <div class="row gy-5">
     
-            @foreach($data['comics'] as $comic)
+            @foreach($comics as $comic)
 
                 <div class="col-2" id="current-series-container">
 
                     <div class="current-series">
 
-                        <img class="img-fluid" src=" {{ $comic['thumb'] }} " alt="comic-poster">
-                        <div class='title pt-2'>
-                            {{ $comic['series'] }} 
-                        </div>
+                        <a href="{{ route('comics.show', $comic->id) }}">
+                            <img class="img-fluid" src=" {{ $comic['thumb'] }} " alt="comic-poster">
+                            <div class='title pt-2'>
+                                {{ $comic['series'] }} 
+                            </div>
+                        </a>
 
                     </div>
 
@@ -43,7 +45,7 @@
     <div class="container">
 
         <ul>
-            @foreach($data['buyComicsLinks'] as $buyComic)
+            @foreach($buyComicsLinks as $buyComic)
                 <li>
                     <img src=" {{ Vite::asset($buyComic['icon']) }} " alt="">
                     {{ $buyComic['title'] }} 

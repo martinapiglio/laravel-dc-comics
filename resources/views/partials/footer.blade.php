@@ -6,7 +6,7 @@
             
            <div id="footer-center-links">
     
-                @foreach ($data['footerLinks'] as $footerLink)
+                @foreach ($footerLinks as $footerLink)
     
                     <div id="footer-center-link">
                 
@@ -41,7 +41,7 @@
     
             <div id="footer-bottom-right">
                 <span class="text">FOLLOW US</span>
-                    @foreach ($data['icons'] as $icon)
+                    @foreach ($icons as $icon)
                         <div class="icons">
                             <img src=" {{ Vite::asset($icon) }} " alt="">                
                         </div>

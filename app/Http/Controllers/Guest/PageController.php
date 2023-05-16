@@ -16,14 +16,6 @@ class PageController extends Controller
         $icons = config('icons');
         $buyComicsLinks = config('links');
 
-        $data = [
-            'comics' => $comics,
-            'navbarLinks' => $navbarLinks,
-            'footerLinks' => $footerLinks,
-            'icons' => $icons,
-            'buyComicsLinks' => $buyComicsLinks
-        ];
-
-        return view('home', compact('data'));
+        return view('home', compact('comics', 'navbarLinks', 'footerLinks', 'icons', 'buyComicsLinks'));
     }
 }
