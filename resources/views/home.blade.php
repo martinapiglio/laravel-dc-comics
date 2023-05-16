@@ -1,59 +1,10 @@
 @extends('layouts/main')
 
 @section('main')
-<main>
+<div class="container my-5">
 
-    <div id="current-series-label">
-        current series
-    </div>
+    <h2 class="mb-3"> <a href="{{route('comics.index')}}"> Click here to see the comics list</a></h2>
+    <h2><a href=""> Click here to add a new comic </a></h2>
 
-    <div class="container">
-
-        <div class="row gy-5">
-    
-            @foreach($comics as $comic)
-
-                <div class="col-2" id="current-series-container">
-
-                    <div class="current-series">
-
-                        <a href="{{ route('comics.show', $comic->id) }}">
-                            <img class="img-fluid" src=" {{ $comic['thumb'] }} " alt="comic-poster">
-                            <div class='title pt-2'>
-                                {{ $comic['series'] }} 
-                            </div>
-                        </a>
-
-                    </div>
-
-                </div>
-
-            @endforeach
-    
-        </div>
-
-        <button class="mt-4">Load more</button>
-
-    </div>
-
-</main>
-@endsection
-
-@section('buy-comics')
-<section id="buy-comics-section">
-
-    <div class="container">
-
-        <ul>
-            @foreach($buyComicsLinks as $buyComic)
-                <li>
-                    <img src=" {{ Vite::asset($buyComic['icon']) }} " alt="">
-                    {{ $buyComic['title'] }} 
-                </li>
-            @endforeach
-        </ul>
-
-    </div>
-    
-</section>
+</div>
 @endsection

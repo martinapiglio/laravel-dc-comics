@@ -10,7 +10,10 @@
     <div class="container container-btm">
 
         <div id="header-left">
-            <img src="{{ Vite::asset('resources/img/dc-logo.png') }}" alt="">
+            <a href="{{route('home')}}">
+                <img src="{{ Vite::asset('resources/img/dc-logo.png') }}" alt="">
+            </a>
+            
         </div>
 
         <div id="header-center">
