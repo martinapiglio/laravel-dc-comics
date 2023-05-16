@@ -1,5 +1,9 @@
 @extends('layouts/main')
 
-@section('content')
-    ciao
+@section('main')
+    main section
+@endsection
+
+@section('buy-comics')
+    buy-comics section
 @endsection

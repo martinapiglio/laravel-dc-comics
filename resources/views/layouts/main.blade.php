@@ -12,6 +12,7 @@
 
     <!-- Styles -->
     @vite('resources/js/app.js')
+    <link rel="stylesheet" href=" {{ Vite::asset('scss/app.scss') }} ">
 
 </head>
 
@@ -19,7 +20,11 @@
 
     @include('partials/header')
 
-    @yield('content')
+    @include('partials/jumbotron')
+
+    @yield('main')
+
+    @yield('buy-comics')
 
     @include('partials/footer')
 
