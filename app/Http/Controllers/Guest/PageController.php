@@ -13,12 +13,14 @@ class PageController extends Controller
         $navbarLinks = config('navbar');
         $footerLinks = config('footer');
         $icons = config('icons');
+        $buyComicsLinks = config('links');
 
         $data = [
             'comics' => $comics,
             'navbarLinks' => $navbarLinks,
             'footerLinks' => $footerLinks,
-            'icons' => $icons
+            'icons' => $icons,
+            'buyComicsLinks' => $buyComicsLinks
         ];
 
         return view('home', compact('data'));
