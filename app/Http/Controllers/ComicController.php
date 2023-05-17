@@ -46,11 +46,12 @@ class ComicController extends Controller
     public function store(Request $request)
     {
         $formData = $request->all();
+        $formData['price'] = '$' . number_format($formData['price'], 2);
         $newComic = new Comic();
         $newComic->fill($formData);
 
         // $newComic->title = $request['title'];
-        // $newComic->description = $request['description'];
+        // $newComic->description = $request['description'];    
         // $newComic->thumb = $request['thumb'];
         // $newComic->price = $request['price'];
         // $newComic->series = $request['series'];

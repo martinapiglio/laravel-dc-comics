@@ -25,11 +25,3 @@
 
 </main>
 @endsection
-
-@section('buy-comics')
-<section id="buy-comics-section">
-
-   buy
-    
-</section>
-@endsection

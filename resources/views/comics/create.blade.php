@@ -27,7 +27,7 @@
 
             <div class="input-group mb-3">
                 <label for="price">Price</label>
-                <input class="mx-3" type="text" id="price" name="price">
+                <input class="mx-3" type="number" id="price" name="price">
             </div>
 
             <div class="input-group mb-3">
@@ -46,12 +46,12 @@
             </div>
 
             <div class="input-group mb-3">
-                <label for="artists">Type</label>
+                <label for="artists">Artists</label>
                 <textarea class="mx-3" type="text" id="artists" name="artists"></textarea>
             </div>
 
             <div class="input-group mb-3">
-                <label for="writers">Type</label>
+                <label for="writers">Writers</label>
                 <textarea class="mx-3" type="text" id="writers" name="writers"></textarea>
             </div>
 
