@@ -18,6 +18,12 @@
 
 <body>
 
+    @php
+        $navbarLinks = config('navbar');
+        $footerLinks = config('footer');
+        $icons = config('icons');
+    @endphp
+
     @include('partials/header')
 
     @include('partials/jumbotron')

@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 
 class ComicController extends Controller
 {
+    
     /**
      * Display a listing of the resource.
      *
@@ -15,12 +16,9 @@ class ComicController extends Controller
     public function index()
     {
         $comics = Comic::all();
-        $navbarLinks = config('navbar');
-        $footerLinks = config('footer');
-        $icons = config('icons');
         $buyComicsLinks = config('links');
 
-        return view('comics/index', compact('comics', 'navbarLinks', 'footerLinks', 'icons', 'buyComicsLinks'));
+        return view('comics/index', compact('comics', 'buyComicsLinks'));
     }
 
     /**
@@ -30,11 +28,7 @@ class ComicController extends Controller
      */
     public function create()
     {
-        $navbarLinks = config('navbar');
-        $footerLinks = config('footer');
-        $icons = config('icons');
-
-        return view('comics/create', compact('navbarLinks', 'footerLinks', 'icons'));
+        return view('comics/create');
     }
 
     /**
@@ -64,7 +58,7 @@ class ComicController extends Controller
         // $newComic->artists = $request['artists'];
         // $newComic->writers = $request['writers'];
 
-        $newComic->save();
+        $newComic->save(); 
 
         return redirect()->route('comics.show', $newComic->id);
     }
@@ -77,12 +71,7 @@ class ComicController extends Controller
      */
     public function show(Comic $comic)
     {
-        $navbarLinks = config('navbar');
-        $footerLinks = config('footer');
-        $icons = config('icons');
-        $buyComicsLinks = config('links');
-
-        return view('comics/show', compact('comic', 'navbarLinks', 'footerLinks', 'icons', 'buyComicsLinks'));
+        return view('comics/show', compact('comic'));
     }
 
     /**
@@ -93,11 +82,7 @@ class ComicController extends Controller
      */
     public function edit(Comic $comic)
     {
-        $navbarLinks = config('navbar');
-        $footerLinks = config('footer');
-        $icons = config('icons');
-
-        return view('comics/edit', compact('comic', 'navbarLinks', 'footerLinks', 'icons'));
+        return view('comics/edit', compact('comic'));
     }
 
     /**
@@ -110,12 +95,11 @@ class ComicController extends Controller
     public function update(Request $request, Comic $comic)
     {
         $formData = $request->all();
-
         $formData['price'] = '$' . number_format(str_replace(',', '.', $formData['price']), 2,'.', ',');
 
         $comic->update($formData);
 
-        $comic->save();
+        //$comic->save(); ------> not needed with update() function
 
         return redirect()->route('comics.show', $comic->id);
     }
