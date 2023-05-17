@@ -23,13 +23,20 @@
 
     </div>
 
-    <div class="container mt-3">
+    <div class="container mt-3 d-flex justify-content-center gap-3">
         
         <a href="{{route('comics.edit', $comic->id)}}">
             <button>
                 Change Comic Info
             </button>
         </a>    
+
+        <form action="{{route('comics.destroy', $comic->id)}}" method="POST">
+            @csrf
+            @method('DELETE')
+    
+            <button class="bg-danger" type="submit">delete comic</button>
+        </form>
         
     </div>
 

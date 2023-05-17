@@ -111,7 +111,7 @@ class ComicController extends Controller
     {
         $formData = $request->all();
         $formData['price'] = '$' . number_format($formData['price'], 2);
-        
+
         $comic->update($formData);
 
         $comic->save();
@@ -127,6 +127,8 @@ class ComicController extends Controller
      */
     public function destroy(Comic $comic)
     {
-        //
+        $comic->delete();
+
+        return redirect()->route('comics.index');
     }
 }
