@@ -28,7 +28,7 @@
 
             <div class="input-group mb-3">
                 <label for="price">Price</label>
-                <input class="mx-3" type="number" id="price" name="price" value="{{$comic->price}}">
+                <input class="mx-3" type="text" step="0.01" id="price" name="price" value=" {{ str_replace('$', '', $comic->price) }} ">
             </div>
 
             <div class="input-group mb-3">

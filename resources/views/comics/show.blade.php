@@ -31,14 +31,12 @@
             </button>
         </a>    
 
-        
-
         {{-- button modal --}}
         <button type="button" class="bg-danger" data-bs-toggle="modal" data-bs-target="#deleteComic">
             Delete Comic
         </button>
-          <!-- Modal -->
-        <div class="modal fade text-dark" id="deleteComic" tabindex="-1" aria-labelledby="deleteComicLabel" aria-hidden="true">
+          <!-- modal -->
+        <div class="modal fade text-dark" id="deleteComic" tabindex="-1" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
 
@@ -65,7 +63,6 @@
                 </div>
             </div>
         </div> 
-
         
     </div>
 

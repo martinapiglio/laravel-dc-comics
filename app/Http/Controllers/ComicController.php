@@ -110,7 +110,8 @@ class ComicController extends Controller
     public function update(Request $request, Comic $comic)
     {
         $formData = $request->all();
-        $formData['price'] = '$' . number_format($formData['price'], 2);
+
+        $formData['price'] = '$' . number_format(str_replace(',', '.', $formData['price']), 2,'.', ',');
 
         $comic->update($formData);
 
