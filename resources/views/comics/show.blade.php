@@ -31,12 +31,41 @@
             </button>
         </a>    
 
-        <form action="{{route('comics.destroy', $comic->id)}}" method="POST">
-            @csrf
-            @method('DELETE')
-    
-            <button class="bg-danger" type="submit">delete comic</button>
-        </form>
+        
+
+        {{-- button modal --}}
+        <button type="button" class="bg-danger" data-bs-toggle="modal" data-bs-target="#deleteComic">
+            Delete Comic
+        </button>
+          <!-- Modal -->
+        <div class="modal fade text-dark" id="deleteComic" tabindex="-1" aria-labelledby="deleteComicLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="exampleModalLabel">Delete Comic</h1>
+                    </div>
+
+                    <div class="modal-body">
+                        Do you want to delete the selected comic? Please consider that this action is irreversible.
+                    </div>
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    
+                        <form action="{{route('comics.destroy', $comic->id)}}" method="POST">
+                            @csrf
+                            @method('DELETE')
+                    
+                            <button class="btn btn-danger" type="submit">delete comic</button>
+                        </form>
+
+                    </div>
+
+                </div>
+            </div>
+        </div> 
+
         
     </div>
 
