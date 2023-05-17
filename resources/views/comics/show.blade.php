@@ -23,5 +23,15 @@
 
     </div>
 
+    <div class="container mt-3">
+        
+        <a href="{{route('comics.edit', $comic->id)}}">
+            <button>
+                Change Comic Info
+            </button>
+        </a>    
+        
+    </div>
+
 </main>
 @endsection

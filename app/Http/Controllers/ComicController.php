@@ -47,8 +47,12 @@ class ComicController extends Controller
     {
         $formData = $request->all();
         $formData['price'] = '$' . number_format($formData['price'], 2);
+
         $newComic = new Comic();
+
         $newComic->fill($formData);
+
+        // extended version of fill() method: -----------------------
 
         // $newComic->title = $request['title'];
         // $newComic->description = $request['description'];    
@@ -89,7 +93,11 @@ class ComicController extends Controller
      */
     public function edit(Comic $comic)
     {
-        //
+        $navbarLinks = config('navbar');
+        $footerLinks = config('footer');
+        $icons = config('icons');
+
+        return view('comics/edit', compact('comic', 'navbarLinks', 'footerLinks', 'icons'));
     }
 
     /**
@@ -101,7 +109,14 @@ class ComicController extends Controller
      */
     public function update(Request $request, Comic $comic)
     {
-        //
+        $formData = $request->all();
+        $formData['price'] = '$' . number_format($formData['price'], 2);
+        
+        $comic->update($formData);
+
+        $comic->save();
+
+        return redirect()->route('comics.show', $comic->id);
     }
 
     /**
