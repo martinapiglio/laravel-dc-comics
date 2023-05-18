@@ -40,17 +40,7 @@ class ComicController extends Controller
     public function store(Request $request)
     {
         //validations
-        $request -> validate([
-            'title' => 'required|min:3|max:50',
-            'description' => 'required|max:255',
-            'thumb' => 'required',
-            'price' => 'required|numeric|min_digits:1',
-            'series' => 'nullable|min:3',
-            'sale_date' => 'required|before_or_equal:today',
-            'type' => 'nullable|min:3',
-            'artists' => 'nullable|min:5',
-            'writers' => 'nullable|min:5'
-        ]);
+        $this->validation($request);
         
         $formData = $request->all();
         $formData['price'] = '$' . number_format($formData['price'], 2);
@@ -108,18 +98,8 @@ class ComicController extends Controller
     public function update(Request $request, Comic $comic)
     {
         //validations
-        $request -> validate([
-            'title' => 'required|min:3|max:50',
-            'description' => 'required|max:255',
-            'thumb' => 'required',
-            'price' => 'required|numeric|min_digits:1',
-            'series' => 'nullable|min:3',
-            'sale_date' => 'required|before_or_equal:today',
-            'type' => 'nullable|min:3',
-            'artists' => 'nullable|min:5',
-            'writers' => 'nullable|min:5'
-        ]);
-        
+        $this->validation($request);
+
         $formData = $request->all();
         $formData['price'] = '$' . number_format(str_replace(',', '.', $formData['price']), 2,'.', ',');
 
@@ -141,5 +121,19 @@ class ComicController extends Controller
         $comic->delete();
 
         return redirect()->route('comics.index');
+    }
+
+    private function validation($request) {
+        $request -> validate([
+            'title' => 'required|min:3|max:50',
+            'description' => 'required|max:255',
+            'thumb' => 'required',
+            'price' => 'required|numeric',
+            'series' => 'nullable|min:3',
+            'sale_date' => 'required|before_or_equal:today',
+            'type' => 'nullable|min:3',
+            'artists' => 'nullable|min:5',
+            'writers' => 'nullable|min:5'
+        ]);
     }
 }

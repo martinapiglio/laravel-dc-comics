@@ -14,6 +14,7 @@
             <p> {{ $comic->description }} </p>
             <ul class="list-group">
                 <li class="list-group-item"> <strong>Series:</strong> {{ $comic->series }}</li>
+                <li class="list-group-item"> <strong>Type:</strong> {{ $comic->type }}</li>
                 <li class="list-group-item"><strong>Price:</strong> {{ $comic->price }}</li>
                 <li class="list-group-item"><strong>On sale starting from:</strong> {{ $comic->sale_date }}</li>
                 <li class="list-group-item"><strong>Artists:</strong> {{ $comic->artists }}</li>
