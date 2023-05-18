@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Comic;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class ComicController extends Controller
 {
@@ -124,7 +125,22 @@ class ComicController extends Controller
     }
 
     private function validation($request) {
-        $request -> validate([
+
+        // $request -> validate([
+        //     'title' => 'required|min:3|max:50',
+        //     'description' => 'required|max:255',
+        //     'thumb' => 'required',
+        //     'price' => 'required|numeric',
+        //     'series' => 'nullable|min:3',
+        //     'sale_date' => 'required|before_or_equal:today',
+        //     'type' => 'nullable|min:3',
+        //     'artists' => 'nullable|min:5',
+        //     'writers' => 'nullable|min:5'
+        // ]);
+
+        $formData = $request->all(); 
+
+        $validator = Validator::make($formData, [
             'title' => 'required|min:3|max:50',
             'description' => 'required|max:255',
             'thumb' => 'required',
@@ -134,6 +150,21 @@ class ComicController extends Controller
             'type' => 'nullable|min:3',
             'artists' => 'nullable|min:5',
             'writers' => 'nullable|min:5'
-        ]);
+        ], [
+            'title.required' => 'Il campo del titolo è obbligatorio.',
+            'title.min' => 'Il titolo non deve essere più corto di 3 caratteri.',
+            'title.max' => 'Il titolo non deve essere più lungo di 50 caratteri.',
+            'description.required' => 'La descrizione è obbligatoria.',
+            'description.max' => 'La descrizione non deve essere più lunga di 255 caratteri.',
+            'thumb.required' => "L'immagine è obbligatoria.",
+            'price.required' => "Il prezzo è obbligatorio.",
+            'price.numeric' => "Il prezzo deve essere un numero.",
+            'series.min' => "La serie non deve essere più corta di 3 caratteri.",
+            'sale_date.required' => "La data di vendita è obbligatoria.",
+            'sale_date.before_or_equal' => "La data di vendita non può essere nel futuro.",
+            'type.min' => "La tipologia non deve essere più corta di 3 caratteri."
+        ])->validate();
+
+        return $validator;
     }
 }
